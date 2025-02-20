@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.library</groupId>
-	<artifactId>library-sql</artifactId>
+	<artifactId>library-sql-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>library</name>
 	<description>Simple Library </description>
