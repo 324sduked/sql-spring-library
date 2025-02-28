@@ -1,4 +1,4 @@
-package pl.library.library;
+package pl.library.library.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
