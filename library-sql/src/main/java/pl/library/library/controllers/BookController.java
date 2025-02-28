@@ -1,9 +1,7 @@
 package pl.library.library.controllers;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.library.library.services.BookDeletionServiceImpl;
 import pl.library.library.services.BookService;
 import pl.library.library.entities.Book;
 
@@ -12,8 +10,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-        @Autowired
-        BookService  bookService;
+
+    private final BookService bookService;
+    private final BookDeletionServiceImpl bookDeletionService;
+
+    public BookController(BookService bookService, BookDeletionServiceImpl bookDeletionService) {
+        this.bookService = bookService;
+        this.bookDeletionService = bookDeletionService;
+    }
 
     @GetMapping("/test")
     public int test(){
@@ -27,13 +31,7 @@ public class BookController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
-        boolean deleted = bookService.deleteBook(id);
-
-        if (deleted) {
-            return ResponseEntity.ok("Book deleted successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found.");
-        }
+       return bookDeletionService.deleteBook(id);
     }
 
 

@@ -1,6 +1,7 @@
 package pl.library.library.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import pl.library.library.entities.Book;
@@ -11,19 +12,23 @@ import java.util.List;
 @Service
 public class BookService {
 
+    private final BookRepository bookRepository;
+    private final BookDeletionService bookDeletionService;
+
+    // Constructor injection for both BookRepository and BookDeletionService
     @Autowired
-    private BookRepository bookRepository;
+    public BookService(BookRepository bookRepository, BookDeletionService bookDeletionService) {
+        this.bookRepository = bookRepository;
+        this.bookDeletionService = bookDeletionService;
+    }
+
+    public ResponseEntity<String> deleteBook(Long id){
+        return bookDeletionService.deleteBook(id);
+    }
+
 
     public Book save(Book book) {
         return bookRepository.save(book);
-    }
-    public boolean deleteBook(Long id) {
-        if (bookRepository.existsById(id)) {
-            bookRepository.deleteById(id);
-            return true;
-        }
-        return false;
-
     }
     public Book findById(long id) {
         return bookRepository.findById(id);
