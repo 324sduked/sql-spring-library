@@ -1,7 +1,6 @@
 package pl.library.library.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.library.library.services.BookDeletionServiceImpl;
 import pl.library.library.services.BookService;
 import pl.library.library.entities.Book;
 
@@ -13,7 +12,7 @@ public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService, BookDeletionServiceImpl bookDeletionService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 

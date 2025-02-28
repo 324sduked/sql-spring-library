@@ -7,6 +7,7 @@ import pl.library.library.entities.Book;
 import pl.library.library.repositories.BookRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -24,9 +25,10 @@ public class BookService {
     public Book save(Book book) {
         return bookRepository.save(book);
     }
-    public Book findById(long id) {
-        return bookRepository.findById(id);
+    public Book findById(Long id) {
+        return bookRepository.findById(id).orElse(null);
     }
+
     public List<Book> findAll(){
         List<Book> books = bookRepository.findAll();
         System.out.println("Books: " + books);

@@ -11,19 +11,17 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String title;
     private String author;
     private String isbn;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")  // Foreign key in the books table
-//    private User user;
 
     public Book() {
     }
 
-    public Book(String title, String author, String isbn) {
+    public Book(Long id, String title, String author, String isbn) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
