@@ -18,7 +18,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     int countBookByTitle(String title);
 
-    boolean deleteById(long id);
-
-
 }

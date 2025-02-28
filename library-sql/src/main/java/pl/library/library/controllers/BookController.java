@@ -12,11 +12,9 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-    private final BookDeletionServiceImpl bookDeletionService;
 
     public BookController(BookService bookService, BookDeletionServiceImpl bookDeletionService) {
         this.bookService = bookService;
-        this.bookDeletionService = bookDeletionService;
     }
 
     @GetMapping("/test")
@@ -31,7 +29,7 @@ public class BookController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
-       return bookDeletionService.deleteBook(id);
+       return bookService.deleteBook(id);
     }
 
 
@@ -47,4 +45,6 @@ public class BookController {
         public int countByTitle(@PathVariable String title) {
             return bookService.countBookByTitle(title);
         }
+        @GetMapping("/find/{title}")
+    public Book findByTitle(@PathVariable String title) { return bookService.findByTitle(title); }
     }
