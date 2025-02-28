@@ -1,6 +1,8 @@
 package pl.library.library.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.library.library.services.BookService;
 import pl.library.library.entities.Book;
@@ -22,7 +24,20 @@ public class BookController {
         public Book addBook(@RequestBody Book book) {
             return bookService.save(book);
         }
-        @GetMapping("/all")
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
+        boolean deleted = bookService.deleteBook(id);
+
+        if (deleted) {
+            return ResponseEntity.ok("Book deleted successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found.");
+        }
+    }
+
+
+    @GetMapping("/all")
         public List<Book> getAllBooks() {
             return bookService.findAll();
         }

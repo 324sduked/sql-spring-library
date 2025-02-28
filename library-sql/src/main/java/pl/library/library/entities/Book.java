@@ -14,7 +14,7 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private int isbn;
+    private String isbn;
 
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")  // Foreign key in the books table
@@ -23,7 +23,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author, int isbn) {
+    public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
