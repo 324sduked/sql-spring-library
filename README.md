@@ -24,3 +24,8 @@ MySQL
 Maven
 
 JUnit 5 + Mockito
+
+📦 Project Structure
+
+![image](https://github.com/user-attachments/assets/f1f48721-eaa0-4fc6-bd7c-2b5996f9d6d0)
+
